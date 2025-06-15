@@ -2,7 +2,7 @@
 
 
 /*
- It works as a Publisher SUbscriber Model
+ It works as a Publisher Subscriber Model
  
   
  

@@ -76,4 +76,31 @@ print(incrementBy2()) // 6
 /*
  🔹 Closures Are Reference Types
  Even if you assign a closure to multiple variables, they all refer to the same captured context.
+ 
+ 
+ 🔹 Escaping vs Non-Escaping Closures
+ Non-Escaping (Default):
+ Executed within the function's scope.
+
+ Can be passed like a normal parameter.
  */
+func doSomething(action: () -> Void) {
+    action()
+}
+/*
+ Escaping (@escaping):
+ Used when a closure outlives the function, like in async operations.
+ */
+var storedClosure: (() -> Void)?
+
+@MainActor func storeClosure(_ closure: @escaping () -> Void) {
+    storedClosure = closure
+}
+/*
+ 🔹 Auto Closures
+ Automatically wraps an expression in a closure.
+ */
+func log(_ message: @autoclosure () -> String) {
+    print("Log: \(message())")
+}
+log("This is a log message.")  // Automatically converted to closure
